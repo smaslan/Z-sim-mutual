@@ -3,9 +3,10 @@
 //
 // Target MCU: ATmega88
 // Fuse bits: use default setup: RC oscillator and /8 divider (1MHz)
+//            If bootloader is used, refer to bootloader code.
 //
 // (c) 2020, Stanislav Maslan, CMI, smaslan@cmi.cz, s.maslan@seznam.cz
-// The script is distributed under MIT license, https://opensource.org/licenses/MIT. 
+// The code is distributed under MIT license, https://opensource.org/licenses/MIT. 
 //
 // Simulator details: 
 //   https://github.com/smaslan/Z-sim-mutual
@@ -18,6 +19,7 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <avr/wdt.h>
+#include <avr/boot.h>
 #include <util/atomic.h>
 #include <util/delay_basic.h>
 #include <util/delay.h>
@@ -53,10 +55,11 @@ typedef struct{
 	uint16_t bias_pwr;
 	uint16_t bias_pot;
 }TCTRL;
-volatile TCTRL ctrl = {0,0,0,0,0};
+volatile TCTRL ctrl;
 
 
-
+// --- jump to bootloader ---
+#define boot_start(boot_addr) {goto *boot_addr;}
 
 //----------------------------------------------------------------------------------
 // special function bistable relays controled via MAX4820
@@ -602,6 +605,15 @@ int main(void)
 	TWSR = (0<<TWPS0);
 	PORTC |= (1<<PC4) | (1<<PC5);
 
+	// clear states
+	ctrl.bias = 0;
+	ctrl.ind = 0;
+	ctrl.range = 0;
+	ctrl.com = 0;
+	ctrl.power = 0;
+	ctrl.bias_pwr = 0;
+	ctrl.bias_pot = 0;
+
 	// init UART
 	serial_init();
 
@@ -693,12 +705,13 @@ int main(void)
 		}
 
 		// --- REMOTE PROCESSING ---
+		char cmdbuf[RX_BUF_SZ]; // local command buffer
 		char *par;
-		if(serial_decode(&par))
+		if(serial_decode(cmdbuf,&par))
 		{
 			// --- command detected ---
 
-			if(!strcmp_P(rxd,PSTR("MODE")))
+			if(!strcmp_P(cmdbuf,PSTR("MODE")))
 			{
 				// "MODE mode" to set polarity of potential to "mode"
 
@@ -714,7 +727,7 @@ int main(void)
 				sbi(modf,CMD_RELAYS);
 
 			}
-			else if(!strcmp_P(rxd,PSTR("RANGE")))
+			else if(!strcmp_P(cmdbuf,PSTR("RANGE")))
 			{
 				// "RANGE range" to set range (1 or 2)
 
@@ -732,7 +745,7 @@ int main(void)
 				}
 					
 			}
-			else if(!strcmp_P(rxd,PSTR("COMMON:STATE")))
+			else if(!strcmp_P(cmdbuf,PSTR("COMMON:STATE")))
 			{
 				// "COMMON:STATE state" to set potential and bias grounds connections (0/1)
 
@@ -750,7 +763,7 @@ int main(void)
 					sbi(modf,CMD_RELAYS);
 				}
 			}
-			else if(!strcmp_P(rxd,PSTR("POWER:STATE")))
+			else if(!strcmp_P(cmdbuf,PSTR("POWER:STATE")))
 			{
 				// "POWER:STATE state" to set enable state of power bias
 
@@ -775,7 +788,7 @@ int main(void)
 					sbi(modf,CMD_RELAYS);
 				}
 			}
-			else if(!strcmp_P(rxd,PSTR("BIAS:VOLT")))
+			else if(!strcmp_P(cmdbuf,PSTR("BIAS:VOLT")))
 			{
 				// "BIAS:VOLT level" to set bias voltage in [mV]
 				// this sets the same bias to both sources
@@ -800,7 +813,7 @@ int main(void)
 					sbi(modf,CMD_POT);
 				}
 			}
-			else if(!strcmp_P(rxd,PSTR("BIAS:POT:VOLT")))
+			else if(!strcmp_P(cmdbuf,PSTR("BIAS:POT:VOLT")))
 			{
 				// "BIAS:POT:VOLT level" to set bias voltage in [mV]
 				// this sets level to potential only
@@ -824,7 +837,7 @@ int main(void)
 
 				}
 			}
-			else if(!strcmp_P(rxd,PSTR("BIAS:PWR:VOLT")))
+			else if(!strcmp_P(cmdbuf,PSTR("BIAS:PWR:VOLT")))
 			{
 				// "BIAS:PWR:VOLT level" to set bias voltage in [mV]
 				// this sets level to power only
@@ -848,7 +861,7 @@ int main(void)
 
 				}
 			}
-			else if(!strcmp_P(rxd,PSTR("FAN")))
+			else if(!strcmp_P(cmdbuf,PSTR("FAN")))
 			{
 				// "FAN state" to set potential and bias grounds connections (LO/HI)
 
@@ -864,40 +877,61 @@ int main(void)
 						serial_error(SCPI_ERR_wrongParamType,PSTR(" Only LO/HI or LOW/HIGH supported."),SCPI_ERR_STORE); // invalid
 				}
 			}
-			else if(!strcmp_P(rxd,PSTR("*OPC?")))
+			else if(!strcmp_P(cmdbuf,PSTR("*OPC?")))
 			{
 				// "*OPC?" returns "+1" when ready to execute new command
 				//  note: this whole code executes in a loop, so the commands are executed
 				//        before we get here again, so OPC? should always return 1 here
 				serial_tx_cstr(PSTR("+1\n"));
 			}
-			else if(!strcmp_P(rxd,PSTR("*RST")))
+			else if(!strcmp_P(cmdbuf,PSTR("*RST")))
 			{
 				// *RST - restarts controller
 				cli();
-				//serial_flush_command();
-				wdt_enable(WDTO_15MS);
+				//wdt_enable(WDTO_15MS);
+				boot_start(0x0000ul);
 				while(1);				
 			}
-			else if(!strcmp_P(rxd,PSTR("*IDN?")))
+			else if(!strcmp_P(cmdbuf,PSTR("*IDN?")))
 			{
 				// "*IDN?" to return IDN string
 				serial_tx_cstr(PSTR("Z-Simulator Bias Source V1.1, s.n. 20200214\n"));
 			}
-			else if(!strcmp_P(rxd,PSTR("SYST:ERR?")))
+			else if(!strcmp_P(cmdbuf,PSTR("SYST:ERR?")))
 			{
 				// "SYST:ERR?" return error buffer
 				serial_error(SCPI_ERR_noError,NULL,SCPI_ERR_SEND);				
+			}
+			else if(!strcmp_P(cmdbuf,PSTR("SYST:BOOT")))
+			{
+				// SYST:BOOT <password> - initiates bootloader
+
+				// send ACK/NACK
+				if(par && !strcmp_P(par,PSTR("17IND10")))
+				{
+					// send ACK
+					serial_tx_cstr(PSTR("1\n"));				
+
+					// get extended fuse bits
+					uint8_t fuex = boot_lock_fuse_bits_get(GET_EXTENDED_FUSE_BITS);
+
+					// extract bootsize index (FUSE_BOOTSZ1:FUSE_BOOTSZ0)
+					fuex = !!(fuex&(~FUSE_BOOTSZ0)) + (!!(fuex&(~FUSE_BOOTSZ1))<<1);
+
+					// calculae bootloader start address in [Bytes]
+					uint16_t addr = FLASHEND + 1 - (256ul<<(3 - fuex));
+					
+					// jump to boot section
+					boot_start(addr);
+				}
+				else
+					serial_tx_cstr(PSTR("0\n"));				
 			}			
 			else
 			{
 				// invalid
 				serial_error(SCPI_ERR_undefinedHeader,NULL,SCPI_ERR_STORE);
 			}
-
-			// command processed
-			serial_flush_command();
-			
 
 		}
 
@@ -931,11 +965,6 @@ int main(void)
 		// update relays
 		if(bit_is_set(modf,CMD_RELAYS))
 			set_relays(&ctrl,1);
-
-		// send remote ACK? ###note: obsolete
-		/*if(bit_is_set(modf,CMD_ACK))
-			serial_tx_cstr(PSTR("0\n"));*/
-			
 		
 		// clear HW mod flags
 		modf = 0;

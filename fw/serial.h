@@ -3,9 +3,10 @@
 //
 // Target MCU: ATmega88
 // Fuse bits: use default setup: RC oscillator and /8 divider (1MHz)
+//            If bootloader is used, refer to bootloader code.
 //
 // (c) 2020, Stanislav Maslan, CMI, smaslan@cmi.cz, s.maslan@seznam.cz
-// The script is distributed under MIT license, https://opensource.org/licenses/MIT. 
+// The code is distributed under MIT license, https://opensource.org/licenses/MIT. 
 //
 // Simulator details: 
 //   https://github.com/smaslan/Z-sim-mutual
@@ -40,14 +41,14 @@
 // rx data buffer
 char rxd[RX_BUF_SZ];
 // rx data position
-volatile uint8_t rxd_ptr;
+volatile char *rxd_ptr;
+volatile char *rxd_read;
 // flags
-volatile uint8_t rxd_stat;
+volatile int8_t rxd_stat;
 
 // prototypes
 void serial_init(void);
-uint8_t serial_decode(char **par);
-void serial_flush_command(void);
+uint8_t serial_decode(char *cbuf,char **par);
 void serial_tx_byte(uint8_t byte);
 void serial_tx_cstr(const char *str);
 void serial_tx_str(char *str);

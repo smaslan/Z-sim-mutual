@@ -3,9 +3,10 @@
 //
 // Target MCU: ATmega88
 // Fuse bits: use default setup: RC oscillator and /8 divider (1MHz)
+//            If bootloader is used, refer to bootloader code.
 //
 // (c) 2020, Stanislav Maslan, CMI, smaslan@cmi.cz, s.maslan@seznam.cz
-// The script is distributed under MIT license, https://opensource.org/licenses/MIT. 
+// The code is distributed under MIT license, https://opensource.org/licenses/MIT. 
 //
 // Simulator details: 
 //   https://github.com/smaslan/Z-sim-mutual

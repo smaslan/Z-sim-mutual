@@ -18,10 +18,6 @@ c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib
                               main.o (atol)
 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4\libc.a(strcmp_P.o)
                               main.o (strcmp_P)
-c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4\libc.a(strchr.o)
-                              serial.o (strchr)
-c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4\libc.a(strupr.o)
-                              serial.o (strupr)
 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4\libc.a(mulsi10.o)
                               c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4\libc.a(atol.o) (__mulsi_const_10)
 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4\libc.a(mul10.o)
@@ -30,10 +26,12 @@ c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib
 Allocating common symbols
 Common symbol       size              file
 
+ctrl                0x9               main.o
 specr               0x1               main.o
 rxd_stat            0x1               main.o
-rxd_ptr             0x1               main.o
+rxd_ptr             0x2               main.o
 rxd                 0x80              main.o
+rxd_read            0x2               main.o
 
 Memory Configuration
 
@@ -157,7 +155,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x0000000000000000      0xff0
+.text           0x0000000000000000     0x11d6
  *(.vectors)
  .vectors       0x0000000000000000       0x34 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4/crtatmega88.o
                 0x0000000000000000                __vector_default
@@ -173,36 +171,36 @@ END GROUP
  *libprintf_flt.a:*(.progmem.data)
  *libc.a:*(.progmem.data)
  *(.progmem.*)
- .progmem.data  0x0000000000000034      0x1e0 main.o
-                0x0000000000000204                srdec_lut
- .progmem.data  0x0000000000000214       0x8c serial.o
-                0x00000000000002a0                . = ALIGN (0x2)
+ .progmem.data  0x0000000000000034      0x1f8 main.o
+                0x000000000000021c                srdec_lut
+ .progmem.data  0x000000000000022c       0x8c serial.o
+                0x00000000000002b8                . = ALIGN (0x2)
  *(.lowtext)
  *(.lowtext*)
-                0x00000000000002a0                __ctors_start = .
+                0x00000000000002b8                __ctors_start = .
  *(.ctors)
-                0x00000000000002a0                __ctors_end = .
-                0x00000000000002a0                __dtors_start = .
+                0x00000000000002b8                __ctors_end = .
+                0x00000000000002b8                __dtors_start = .
  *(.dtors)
-                0x00000000000002a0                __dtors_end = .
+                0x00000000000002b8                __dtors_end = .
  SORT_BY_NAME(*)(.ctors)
  SORT_BY_NAME(*)(.dtors)
  *(.init0)
- .init0         0x00000000000002a0        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4/crtatmega88.o
-                0x00000000000002a0                __init
+ .init0         0x00000000000002b8        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4/crtatmega88.o
+                0x00000000000002b8                __init
  *(.init0)
  *(.init1)
  *(.init1)
  *(.init2)
- .init2         0x00000000000002a0        0xc c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4/crtatmega88.o
+ .init2         0x00000000000002b8        0xc c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4/crtatmega88.o
  *(.init2)
  *(.init3)
  *(.init3)
  *(.init4)
- .init4         0x00000000000002ac       0x16 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_copy_data.o)
-                0x00000000000002ac                __do_copy_data
- .init4         0x00000000000002c2       0x10 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_clear_bss.o)
-                0x00000000000002c2                __do_clear_bss
+ .init4         0x00000000000002c4       0x16 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_copy_data.o)
+                0x00000000000002c4                __do_copy_data
+ .init4         0x00000000000002da       0x10 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_clear_bss.o)
+                0x00000000000002da                __do_clear_bss
  *(.init4)
  *(.init5)
  *(.init5)
@@ -213,181 +211,173 @@ END GROUP
  *(.init8)
  *(.init8)
  *(.init9)
- .init9         0x00000000000002d2        0x4 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4/crtatmega88.o
+ .init9         0x00000000000002ea        0x4 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4/crtatmega88.o
  *(.init9)
  *(.text)
- .text          0x00000000000002d6        0x2 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4/crtatmega88.o
-                0x00000000000002d6                __vector_22
-                0x00000000000002d6                __vector_1
-                0x00000000000002d6                __vector_24
-                0x00000000000002d6                __vector_12
-                0x00000000000002d6                __bad_interrupt
-                0x00000000000002d6                __vector_6
-                0x00000000000002d6                __vector_3
-                0x00000000000002d6                __vector_23
-                0x00000000000002d6                __vector_25
-                0x00000000000002d6                __vector_11
-                0x00000000000002d6                __vector_13
-                0x00000000000002d6                __vector_17
-                0x00000000000002d6                __vector_19
-                0x00000000000002d6                __vector_7
-                0x00000000000002d6                __vector_5
-                0x00000000000002d6                __vector_4
-                0x00000000000002d6                __vector_9
-                0x00000000000002d6                __vector_2
-                0x00000000000002d6                __vector_21
-                0x00000000000002d6                __vector_15
-                0x00000000000002d6                __vector_8
-                0x00000000000002d6                __vector_10
-                0x00000000000002d6                __vector_16
-                0x00000000000002d6                __vector_20
- .text          0x00000000000002d8      0x45c main.o
-                0x00000000000002d8                spec_relay_update
-                0x00000000000002ee                spec_relay_set
-                0x00000000000002fc                spec_relay_init
-                0x0000000000000312                spec_relay_generate_pulse
-                0x0000000000000320                set_relays
-                0x0000000000000364                spec_rel_tick
-                0x00000000000003b4                timeout_set
-                0x00000000000003c6                timeout_done
-                0x00000000000003de                __vector_14
-                0x00000000000005ce                i2c_wait
-                0x00000000000005f0                i2c_write_data
-                0x00000000000006b8                LTC2631_init
-                0x00000000000006f4                LTC2631_set
- .text          0x0000000000000734      0x1ec serial.o
-                0x0000000000000734                __vector_18
-                0x000000000000078e                serial_init
-                0x00000000000007ba                serial_decode
-                0x0000000000000848                serial_flush_command
-                0x0000000000000858                serial_tx_byte
-                0x0000000000000866                serial_tx_cstr
-                0x0000000000000880                serial_tx_str
-                0x0000000000000898                serial_error
- .text          0x0000000000000920        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_udivmodsi4.o)
- .text          0x0000000000000920        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_exit.o)
- .text          0x0000000000000920        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_copy_data.o)
- .text          0x0000000000000920        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_clear_bss.o)
- .text          0x0000000000000920        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_muluhisi3.o)
- .text          0x0000000000000920        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_umulhisi3.o)
- .text          0x0000000000000920        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4\libc.a(atoi.o)
- .text          0x0000000000000920        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4\libc.a(atol.o)
- .text          0x0000000000000920        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4\libc.a(strcmp_P.o)
- .text          0x0000000000000920        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4\libc.a(strchr.o)
- .text          0x0000000000000920        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4\libc.a(strupr.o)
- .text          0x0000000000000920        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4\libc.a(mulsi10.o)
- .text          0x0000000000000920        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4\libc.a(mul10.o)
-                0x0000000000000920                . = ALIGN (0x2)
+ .text          0x00000000000002ee        0x2 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4/crtatmega88.o
+                0x00000000000002ee                __vector_22
+                0x00000000000002ee                __vector_1
+                0x00000000000002ee                __vector_24
+                0x00000000000002ee                __vector_12
+                0x00000000000002ee                __bad_interrupt
+                0x00000000000002ee                __vector_6
+                0x00000000000002ee                __vector_3
+                0x00000000000002ee                __vector_23
+                0x00000000000002ee                __vector_25
+                0x00000000000002ee                __vector_11
+                0x00000000000002ee                __vector_13
+                0x00000000000002ee                __vector_17
+                0x00000000000002ee                __vector_19
+                0x00000000000002ee                __vector_7
+                0x00000000000002ee                __vector_5
+                0x00000000000002ee                __vector_4
+                0x00000000000002ee                __vector_9
+                0x00000000000002ee                __vector_2
+                0x00000000000002ee                __vector_21
+                0x00000000000002ee                __vector_15
+                0x00000000000002ee                __vector_8
+                0x00000000000002ee                __vector_10
+                0x00000000000002ee                __vector_16
+                0x00000000000002ee                __vector_20
+ .text          0x00000000000002f0      0x45c main.o
+                0x00000000000002f0                spec_relay_update
+                0x0000000000000306                spec_relay_set
+                0x0000000000000314                spec_relay_init
+                0x000000000000032a                spec_relay_generate_pulse
+                0x0000000000000338                set_relays
+                0x000000000000037c                spec_rel_tick
+                0x00000000000003cc                timeout_set
+                0x00000000000003de                timeout_done
+                0x00000000000003f6                __vector_14
+                0x00000000000005e6                i2c_wait
+                0x0000000000000608                i2c_write_data
+                0x00000000000006d0                LTC2631_init
+                0x000000000000070c                LTC2631_set
+ .text          0x000000000000074c      0x23e serial.o
+                0x000000000000074c                __vector_18
+                0x00000000000007a2                serial_init
+                0x00000000000007dc                serial_decode
+                0x00000000000008a6                serial_tx_byte
+                0x00000000000008b4                serial_tx_wait
+                0x00000000000008be                serial_tx_cstr
+                0x00000000000008ea                serial_tx_str
+                0x0000000000000902                serial_error
+ .text          0x000000000000098a        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_udivmodsi4.o)
+ .text          0x000000000000098a        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_exit.o)
+ .text          0x000000000000098a        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_copy_data.o)
+ .text          0x000000000000098a        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_clear_bss.o)
+ .text          0x000000000000098a        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_muluhisi3.o)
+ .text          0x000000000000098a        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_umulhisi3.o)
+ .text          0x000000000000098a        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4\libc.a(atoi.o)
+ .text          0x000000000000098a        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4\libc.a(atol.o)
+ .text          0x000000000000098a        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4\libc.a(strcmp_P.o)
+ .text          0x000000000000098a        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4\libc.a(mulsi10.o)
+ .text          0x000000000000098a        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4\libc.a(mul10.o)
+                0x000000000000098a                . = ALIGN (0x2)
  *(.text.*)
- .text.startup  0x0000000000000920      0x560 main.o
-                0x0000000000000920                main
+ .text.startup  0x000000000000098a      0x706 main.o
+                0x000000000000098a                main
  .text.libgcc.mul
-                0x0000000000000e80        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_udivmodsi4.o)
+                0x0000000000001090        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_udivmodsi4.o)
  .text.libgcc.div
-                0x0000000000000e80       0x44 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_udivmodsi4.o)
-                0x0000000000000e80                __udivmodsi4
- .text.libgcc   0x0000000000000ec4        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_udivmodsi4.o)
+                0x0000000000001090       0x44 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_udivmodsi4.o)
+                0x0000000000001090                __udivmodsi4
+ .text.libgcc   0x00000000000010d4        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_udivmodsi4.o)
  .text.libgcc.prologue
-                0x0000000000000ec4        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_udivmodsi4.o)
+                0x00000000000010d4        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_udivmodsi4.o)
  .text.libgcc.builtins
-                0x0000000000000ec4        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_udivmodsi4.o)
+                0x00000000000010d4        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_udivmodsi4.o)
  .text.libgcc.fmul
-                0x0000000000000ec4        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_udivmodsi4.o)
+                0x00000000000010d4        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_udivmodsi4.o)
  .text.libgcc.fixed
-                0x0000000000000ec4        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_udivmodsi4.o)
+                0x00000000000010d4        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_udivmodsi4.o)
  .text.libgcc.mul
-                0x0000000000000ec4        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_exit.o)
+                0x00000000000010d4        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_exit.o)
  .text.libgcc.div
-                0x0000000000000ec4        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_exit.o)
- .text.libgcc   0x0000000000000ec4        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_exit.o)
+                0x00000000000010d4        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_exit.o)
+ .text.libgcc   0x00000000000010d4        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_exit.o)
  .text.libgcc.prologue
-                0x0000000000000ec4        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_exit.o)
+                0x00000000000010d4        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_exit.o)
  .text.libgcc.builtins
-                0x0000000000000ec4        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_exit.o)
+                0x00000000000010d4        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_exit.o)
  .text.libgcc.fmul
-                0x0000000000000ec4        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_exit.o)
+                0x00000000000010d4        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_exit.o)
  .text.libgcc.fixed
-                0x0000000000000ec4        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_exit.o)
+                0x00000000000010d4        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_exit.o)
  .text.libgcc.mul
-                0x0000000000000ec4        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_copy_data.o)
+                0x00000000000010d4        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_copy_data.o)
  .text.libgcc.div
-                0x0000000000000ec4        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_copy_data.o)
- .text.libgcc   0x0000000000000ec4        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_copy_data.o)
+                0x00000000000010d4        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_copy_data.o)
+ .text.libgcc   0x00000000000010d4        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_copy_data.o)
  .text.libgcc.prologue
-                0x0000000000000ec4        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_copy_data.o)
+                0x00000000000010d4        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_copy_data.o)
  .text.libgcc.builtins
-                0x0000000000000ec4        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_copy_data.o)
+                0x00000000000010d4        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_copy_data.o)
  .text.libgcc.fmul
-                0x0000000000000ec4        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_copy_data.o)
+                0x00000000000010d4        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_copy_data.o)
  .text.libgcc.fixed
-                0x0000000000000ec4        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_copy_data.o)
+                0x00000000000010d4        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_copy_data.o)
  .text.libgcc.mul
-                0x0000000000000ec4        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_clear_bss.o)
+                0x00000000000010d4        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_clear_bss.o)
  .text.libgcc.div
-                0x0000000000000ec4        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_clear_bss.o)
- .text.libgcc   0x0000000000000ec4        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_clear_bss.o)
+                0x00000000000010d4        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_clear_bss.o)
+ .text.libgcc   0x00000000000010d4        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_clear_bss.o)
  .text.libgcc.prologue
-                0x0000000000000ec4        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_clear_bss.o)
+                0x00000000000010d4        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_clear_bss.o)
  .text.libgcc.builtins
-                0x0000000000000ec4        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_clear_bss.o)
+                0x00000000000010d4        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_clear_bss.o)
  .text.libgcc.fmul
-                0x0000000000000ec4        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_clear_bss.o)
+                0x00000000000010d4        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_clear_bss.o)
  .text.libgcc.fixed
-                0x0000000000000ec4        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_clear_bss.o)
+                0x00000000000010d4        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_clear_bss.o)
  .text.libgcc.mul
-                0x0000000000000ec4       0x14 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_muluhisi3.o)
-                0x0000000000000ec4                __muluhisi3
+                0x00000000000010d4       0x14 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_muluhisi3.o)
+                0x00000000000010d4                __muluhisi3
  .text.libgcc.div
-                0x0000000000000ed8        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_muluhisi3.o)
- .text.libgcc   0x0000000000000ed8        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_muluhisi3.o)
+                0x00000000000010e8        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_muluhisi3.o)
+ .text.libgcc   0x00000000000010e8        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_muluhisi3.o)
  .text.libgcc.prologue
-                0x0000000000000ed8        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_muluhisi3.o)
+                0x00000000000010e8        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_muluhisi3.o)
  .text.libgcc.builtins
-                0x0000000000000ed8        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_muluhisi3.o)
+                0x00000000000010e8        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_muluhisi3.o)
  .text.libgcc.fmul
-                0x0000000000000ed8        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_muluhisi3.o)
+                0x00000000000010e8        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_muluhisi3.o)
  .text.libgcc.fixed
-                0x0000000000000ed8        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_muluhisi3.o)
+                0x00000000000010e8        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_muluhisi3.o)
  .text.libgcc.mul
-                0x0000000000000ed8       0x18 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_umulhisi3.o)
-                0x0000000000000ed8                __umulhisi3
+                0x00000000000010e8       0x18 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_umulhisi3.o)
+                0x00000000000010e8                __umulhisi3
  .text.libgcc.div
-                0x0000000000000ef0        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_umulhisi3.o)
- .text.libgcc   0x0000000000000ef0        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_umulhisi3.o)
+                0x0000000000001100        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_umulhisi3.o)
+ .text.libgcc   0x0000000000001100        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_umulhisi3.o)
  .text.libgcc.prologue
-                0x0000000000000ef0        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_umulhisi3.o)
+                0x0000000000001100        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_umulhisi3.o)
  .text.libgcc.builtins
-                0x0000000000000ef0        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_umulhisi3.o)
+                0x0000000000001100        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_umulhisi3.o)
  .text.libgcc.fmul
-                0x0000000000000ef0        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_umulhisi3.o)
+                0x0000000000001100        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_umulhisi3.o)
  .text.libgcc.fixed
-                0x0000000000000ef0        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_umulhisi3.o)
+                0x0000000000001100        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_umulhisi3.o)
  .text.avr-libc
-                0x0000000000000ef0       0x3a c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4\libc.a(atoi.o)
-                0x0000000000000ef0                atoi
+                0x0000000000001100       0x3a c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4\libc.a(atoi.o)
+                0x0000000000001100                atoi
  .text.avr-libc
-                0x0000000000000f2a       0x4c c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4\libc.a(atol.o)
-                0x0000000000000f2a                atol
+                0x000000000000113a       0x4c c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4\libc.a(atol.o)
+                0x000000000000113a                atol
  .text.avr-libc
-                0x0000000000000f76       0x12 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4\libc.a(strcmp_P.o)
-                0x0000000000000f76                strcmp_P
+                0x0000000000001186       0x12 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4\libc.a(strcmp_P.o)
+                0x0000000000001186                strcmp_P
  .text.avr-libc
-                0x0000000000000f88       0x16 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4\libc.a(strchr.o)
-                0x0000000000000f88                strchr
+                0x0000000000001198       0x2a c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4\libc.a(mulsi10.o)
+                0x0000000000001198                __mulsi_const_10
  .text.avr-libc
-                0x0000000000000f9e       0x14 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4\libc.a(strupr.o)
-                0x0000000000000f9e                strupr
- .text.avr-libc
-                0x0000000000000fb2       0x2a c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4\libc.a(mulsi10.o)
-                0x0000000000000fb2                __mulsi_const_10
- .text.avr-libc
-                0x0000000000000fdc       0x10 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4\libc.a(mul10.o)
-                0x0000000000000fdc                __mulhi_const_10
-                0x0000000000000fec                . = ALIGN (0x2)
+                0x00000000000011c2       0x10 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4\libc.a(mul10.o)
+                0x00000000000011c2                __mulhi_const_10
+                0x00000000000011d2                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x0000000000000fec        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_exit.o)
-                0x0000000000000fec                _exit
-                0x0000000000000fec                exit
+ .fini9         0x00000000000011d2        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_exit.o)
+                0x00000000000011d2                _exit
+                0x00000000000011d2                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -406,17 +396,17 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x0000000000000fec        0x4 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_exit.o)
+ .fini0         0x00000000000011d2        0x4 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_exit.o)
  *(.fini0)
  *(.hightext)
  *(.hightext*)
  *(.progmemx.*)
-                0x0000000000000ff0                . = ALIGN (0x2)
+                0x00000000000011d6                . = ALIGN (0x2)
  *(.jumptables)
  *(.jumptables*)
-                0x0000000000000ff0                _etext = .
+                0x00000000000011d6                _etext = .
 
-.data           0x0000000000800100        0xc load address 0x0000000000000ff0
+.data           0x0000000000800100        0xc load address 0x00000000000011d6
                 0x0000000000800100                PROVIDE (__data_start = .)
  *(.data)
  .data          0x0000000000800100        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4/crtatmega88.o
@@ -431,8 +421,6 @@ END GROUP
  .data          0x0000000000800100        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4\libc.a(atoi.o)
  .data          0x0000000000800100        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4\libc.a(atol.o)
  .data          0x0000000000800100        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4\libc.a(strcmp_P.o)
- .data          0x0000000000800100        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4\libc.a(strchr.o)
- .data          0x0000000000800100        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4\libc.a(strupr.o)
  .data          0x0000000000800100        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4\libc.a(mulsi10.o)
  .data          0x0000000000800100        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4\libc.a(mul10.o)
  *(.data*)
@@ -446,45 +434,44 @@ END GROUP
                 0x000000000080010c                _edata = .
                 0x000000000080010c                PROVIDE (__data_end = .)
 
-.bss            0x000000000080010c       0x99
+.bss            0x000000000080010c       0x9c
                 0x000000000080010c                PROVIDE (__bss_start = .)
  *(.bss)
  .bss           0x000000000080010c        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4/crtatmega88.o
- .bss           0x000000000080010c       0x12 main.o
+ .bss           0x000000000080010c        0x9 main.o
                 0x000000000080010c                btns_down
                 0x000000000080010d                btns
                 0x000000000080010e                timeout
-                0x0000000000800110                ctrl
- .bss           0x000000000080011e        0x4 serial.o
- .bss           0x0000000000800122        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_udivmodsi4.o)
- .bss           0x0000000000800122        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_exit.o)
- .bss           0x0000000000800122        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_copy_data.o)
- .bss           0x0000000000800122        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_clear_bss.o)
- .bss           0x0000000000800122        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_muluhisi3.o)
- .bss           0x0000000000800122        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_umulhisi3.o)
- .bss           0x0000000000800122        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4\libc.a(atoi.o)
- .bss           0x0000000000800122        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4\libc.a(atol.o)
- .bss           0x0000000000800122        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4\libc.a(strcmp_P.o)
- .bss           0x0000000000800122        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4\libc.a(strchr.o)
- .bss           0x0000000000800122        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4\libc.a(strupr.o)
- .bss           0x0000000000800122        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4\libc.a(mulsi10.o)
- .bss           0x0000000000800122        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4\libc.a(mul10.o)
+ .bss           0x0000000000800115        0x4 serial.o
+ .bss           0x0000000000800119        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_udivmodsi4.o)
+ .bss           0x0000000000800119        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_exit.o)
+ .bss           0x0000000000800119        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_copy_data.o)
+ .bss           0x0000000000800119        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_clear_bss.o)
+ .bss           0x0000000000800119        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_muluhisi3.o)
+ .bss           0x0000000000800119        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_umulhisi3.o)
+ .bss           0x0000000000800119        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4\libc.a(atoi.o)
+ .bss           0x0000000000800119        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4\libc.a(atol.o)
+ .bss           0x0000000000800119        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4\libc.a(strcmp_P.o)
+ .bss           0x0000000000800119        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4\libc.a(mulsi10.o)
+ .bss           0x0000000000800119        0x0 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4\libc.a(mul10.o)
  *(.bss*)
  *(COMMON)
- COMMON         0x0000000000800122       0x83 main.o
+ COMMON         0x0000000000800119       0x8f main.o
+                0x0000000000800119                ctrl
                 0x0000000000800122                specr
                 0x0000000000800123                rxd_stat
                 0x0000000000800124                rxd_ptr
-                0x0000000000800125                rxd
-                0x00000000008001a5                PROVIDE (__bss_end = .)
-                0x0000000000000ff0                __data_load_start = LOADADDR (.data)
-                0x0000000000000ffc                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x0000000000800126                rxd
+                0x00000000008001a6                rxd_read
+                0x00000000008001a8                PROVIDE (__bss_end = .)
+                0x00000000000011d6                __data_load_start = LOADADDR (.data)
+                0x00000000000011e2                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x00000000008001a5        0x0
+.noinit         0x00000000008001a8        0x0
                 [!provide]                        PROVIDE (__noinit_start = .)
  *(.noinit*)
                 [!provide]                        PROVIDE (__noinit_end = .)
-                0x00000000008001a5                _end = .
+                0x00000000008001a8                _end = .
                 [!provide]                        PROVIDE (__heap_start = .)
 
 .eeprom         0x0000000000810000        0x0
@@ -569,65 +556,65 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x0000000000000000     0x2411
+.debug_info     0x0000000000000000     0x26fd
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x0000000000000000      0x5f4 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4/crtatmega88.o
- .debug_info    0x00000000000005f4     0x1827 main.o
- .debug_info    0x0000000000001e1b      0x512 serial.o
- .debug_info    0x000000000000232d       0x26 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_udivmodsi4.o)
- .debug_info    0x0000000000002353       0x26 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_exit.o)
- .debug_info    0x0000000000002379       0x26 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_copy_data.o)
- .debug_info    0x000000000000239f       0x26 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_clear_bss.o)
- .debug_info    0x00000000000023c5       0x26 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_muluhisi3.o)
- .debug_info    0x00000000000023eb       0x26 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_umulhisi3.o)
+ .debug_info    0x00000000000005f4     0x193e main.o
+ .debug_info    0x0000000000001f32      0x6e7 serial.o
+ .debug_info    0x0000000000002619       0x26 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_udivmodsi4.o)
+ .debug_info    0x000000000000263f       0x26 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_exit.o)
+ .debug_info    0x0000000000002665       0x26 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_copy_data.o)
+ .debug_info    0x000000000000268b       0x26 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_clear_bss.o)
+ .debug_info    0x00000000000026b1       0x26 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_muluhisi3.o)
+ .debug_info    0x00000000000026d7       0x26 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_umulhisi3.o)
 
-.debug_abbrev   0x0000000000000000      0xc88
+.debug_abbrev   0x0000000000000000      0xd2b
  *(.debug_abbrev)
  .debug_abbrev  0x0000000000000000      0x5a2 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4/crtatmega88.o
- .debug_abbrev  0x00000000000005a2      0x4ba main.o
- .debug_abbrev  0x0000000000000a5c      0x1b4 serial.o
- .debug_abbrev  0x0000000000000c10       0x14 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_udivmodsi4.o)
- .debug_abbrev  0x0000000000000c24       0x14 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_exit.o)
- .debug_abbrev  0x0000000000000c38       0x14 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_copy_data.o)
- .debug_abbrev  0x0000000000000c4c       0x14 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_clear_bss.o)
- .debug_abbrev  0x0000000000000c60       0x14 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_muluhisi3.o)
- .debug_abbrev  0x0000000000000c74       0x14 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_umulhisi3.o)
+ .debug_abbrev  0x00000000000005a2      0x4a2 main.o
+ .debug_abbrev  0x0000000000000a44      0x26f serial.o
+ .debug_abbrev  0x0000000000000cb3       0x14 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_udivmodsi4.o)
+ .debug_abbrev  0x0000000000000cc7       0x14 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_exit.o)
+ .debug_abbrev  0x0000000000000cdb       0x14 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_copy_data.o)
+ .debug_abbrev  0x0000000000000cef       0x14 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_clear_bss.o)
+ .debug_abbrev  0x0000000000000d03       0x14 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_muluhisi3.o)
+ .debug_abbrev  0x0000000000000d17       0x14 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_umulhisi3.o)
 
-.debug_line     0x0000000000000000     0x2c09
+.debug_line     0x0000000000000000     0x2fea
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x0000000000000000       0x1d c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4/crtatmega88.o
- .debug_line    0x000000000000001d     0x219e main.o
- .debug_line    0x00000000000021bb      0x682 serial.o
- .debug_line    0x000000000000283d      0x121 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_udivmodsi4.o)
- .debug_line    0x000000000000295e       0x61 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_exit.o)
- .debug_line    0x00000000000029bf       0x97 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_copy_data.o)
- .debug_line    0x0000000000002a56       0x85 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_clear_bss.o)
- .debug_line    0x0000000000002adb       0x91 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_muluhisi3.o)
- .debug_line    0x0000000000002b6c       0x9d c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_umulhisi3.o)
+ .debug_line    0x000000000000001d     0x2338 main.o
+ .debug_line    0x0000000000002355      0x8c9 serial.o
+ .debug_line    0x0000000000002c1e      0x121 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_udivmodsi4.o)
+ .debug_line    0x0000000000002d3f       0x61 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_exit.o)
+ .debug_line    0x0000000000002da0       0x97 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_copy_data.o)
+ .debug_line    0x0000000000002e37       0x85 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_clear_bss.o)
+ .debug_line    0x0000000000002ebc       0x91 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_muluhisi3.o)
+ .debug_line    0x0000000000002f4d       0x9d c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_umulhisi3.o)
 
-.debug_frame    0x0000000000000000      0x258
+.debug_frame    0x0000000000000000      0x25c
  *(.debug_frame)
  .debug_frame   0x0000000000000000      0x18c main.o
- .debug_frame   0x000000000000018c       0xcc serial.o
+ .debug_frame   0x000000000000018c       0xd0 serial.o
 
-.debug_str      0x0000000000000000      0x6a2
+.debug_str      0x0000000000000000      0x6ba
  *(.debug_str)
  .debug_str     0x0000000000000000      0x20b c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/../../../../avr/lib/avr4/crtatmega88.o
- .debug_str     0x000000000000020b      0x3d1 main.o
-                                        0x420 (size before relaxing)
- .debug_str     0x00000000000005dc       0x64 serial.o
-                                        0x215 (size before relaxing)
- .debug_str     0x0000000000000640       0x62 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_udivmodsi4.o)
- .debug_str     0x00000000000006a2       0x62 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_exit.o)
- .debug_str     0x00000000000006a2       0x62 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_copy_data.o)
- .debug_str     0x00000000000006a2       0x62 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_clear_bss.o)
- .debug_str     0x00000000000006a2       0x62 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_muluhisi3.o)
- .debug_str     0x00000000000006a2       0x62 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_umulhisi3.o)
+ .debug_str     0x000000000000020b      0x3cb main.o
+                                        0x41a (size before relaxing)
+ .debug_str     0x00000000000005d6       0x82 serial.o
+                                        0x263 (size before relaxing)
+ .debug_str     0x0000000000000658       0x62 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_udivmodsi4.o)
+ .debug_str     0x00000000000006ba       0x62 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_exit.o)
+ .debug_str     0x00000000000006ba       0x62 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_copy_data.o)
+ .debug_str     0x00000000000006ba       0x62 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_clear_bss.o)
+ .debug_str     0x00000000000006ba       0x62 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_muluhisi3.o)
+ .debug_str     0x00000000000006ba       0x62 c:/sw/atmel/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr4\libgcc.a(_umulhisi3.o)
 
-.debug_loc      0x0000000000000000      0xb76
+.debug_loc      0x0000000000000000      0xe57
  *(.debug_loc)
- .debug_loc     0x0000000000000000      0x71a main.o
- .debug_loc     0x000000000000071a      0x45c serial.o
+ .debug_loc     0x0000000000000000      0x72f main.o
+ .debug_loc     0x000000000000072f      0x728 serial.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -647,10 +634,10 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x0000000000000000       0xf8
+.debug_ranges   0x0000000000000000      0x110
  *(.debug_ranges)
  .debug_ranges  0x0000000000000000       0xe0 main.o
- .debug_ranges  0x00000000000000e0       0x18 serial.o
+ .debug_ranges  0x00000000000000e0       0x30 serial.o
 
 .debug_macro
  *(.debug_macro)

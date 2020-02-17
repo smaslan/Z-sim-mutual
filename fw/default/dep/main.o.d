@@ -15,6 +15,9 @@ main.o: ../main.c \
  c:\sw\atmel\avr-gcc-9.2.0-x64-mingw\avr\include\avr\lock.h \
  c:\sw\atmel\avr-gcc-9.2.0-x64-mingw\avr\include\avr\interrupt.h \
  c:\sw\atmel\avr-gcc-9.2.0-x64-mingw\avr\include\avr\wdt.h \
+ c:\sw\atmel\avr-gcc-9.2.0-x64-mingw\avr\include\avr\boot.h \
+ c:\sw\atmel\avr-gcc-9.2.0-x64-mingw\avr\include\avr\eeprom.h \
+ c:\sw\atmel\avr-gcc-9.2.0-x64-mingw\lib\gcc\avr\9.2.0\include-fixed\limits.h \
  c:\sw\atmel\avr-gcc-9.2.0-x64-mingw\avr\include\util\atomic.h \
  c:\sw\atmel\avr-gcc-9.2.0-x64-mingw\avr\include\util\delay_basic.h \
  c:\sw\atmel\avr-gcc-9.2.0-x64-mingw\avr\include\util\delay.h \
@@ -57,6 +60,12 @@ c:\sw\atmel\avr-gcc-9.2.0-x64-mingw\avr\include\avr\lock.h:
 c:\sw\atmel\avr-gcc-9.2.0-x64-mingw\avr\include\avr\interrupt.h:
 
 c:\sw\atmel\avr-gcc-9.2.0-x64-mingw\avr\include\avr\wdt.h:
+
+c:\sw\atmel\avr-gcc-9.2.0-x64-mingw\avr\include\avr\boot.h:
+
+c:\sw\atmel\avr-gcc-9.2.0-x64-mingw\avr\include\avr\eeprom.h:
+
+c:\sw\atmel\avr-gcc-9.2.0-x64-mingw\lib\gcc\avr\9.2.0\include-fixed\limits.h:
 
 c:\sw\atmel\avr-gcc-9.2.0-x64-mingw\avr\include\util\atomic.h:
 
